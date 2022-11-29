@@ -33,6 +33,10 @@ const SVG = styled.svg`
     bottom: 0;
     width: 69%;
     transform: scaleX(-1);
+    path{
+      stroke:white;
+      stroke-width:2;
+    }
 `
 const helloVariants = {
     initial:{
@@ -174,6 +178,7 @@ function HomeStart(){
                         transition={{
                             default: {duration: 5},
                             fill: {duration:3, delay: 2},
+
                         }}
                        
                         d="M10547 8561 c-26 -3 -48 -10 -49 -16 -1 -5 -19 -16 -39 -23 -20 -6
