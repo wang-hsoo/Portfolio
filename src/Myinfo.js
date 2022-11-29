@@ -127,7 +127,7 @@ function Myinfo(){
                 <Answer>
                         <List layoutId="A" onClick={()=>setSelectId("A")}>A</List>
                         <List layoutId="B" onClick={()=>setSelectId("B")}>B</List>
-                        <List layoutId="C" onClick={()=>setSelectId("C")}># 미래에 하고싶은 일은 무엇입니까?</List>
+                        <List layoutId="C" onClick={()=>setSelectId("C")}># 개발자로서 향후 목표</List>
                 </Answer>
                 <AnimatePresence>
                     
@@ -137,7 +137,7 @@ function Myinfo(){
                         {selectId === 'A' && <ListQna layoutId="A" onClick={()=>setSelectId(null)} >A</ListQna>}
                         {selectId === 'B' && <ListQna layoutId="B" onClick={()=>setSelectId(null)} >B</ListQna>}
                         {selectId === 'C' && <ListQna layoutId="C" onClick={()=>setSelectId(null)} >
-                            <div># 미래에 하고싶은 일은 무엇입니까?</div>
+                            <div># 개발자로서 향후 목표</div>
                             <div>저는 현재 개발이 재밌고 잘하고 싶어 개발자를 희망하고 있습니다</div>
                             <div>하지만 기획도 관심있으며 한 프로젝트에 전체적인 부분에 관여할 수 있는 PM에 매력을 느끼고 있습니다</div>
                             <div>그렇기 때문에 프론트, 백엔드, 모바일 등 여러 분야를 차근차근 공부하며 성장해 개발이 가능한 PM이 되는것이 목표입니다.</div>

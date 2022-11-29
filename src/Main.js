@@ -1,10 +1,14 @@
 import styled from "styled-components";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useAnimation, useScroll, useSpring  } from "framer-motion";
 import Stact from "./Stact";
 import Myinfo from "./Myinfo";
 import Project from "./Project";
-import NavBar from "./NavBar";
+import HomeStart from "./HomeStart";
+import home from "./img/home.png";
+import user from "./img/user.png";
+import skill from "./img/skill.png";
+import project from "./img/project.png";
 
 const Wrapper = styled.div`
     width: 100vw;
@@ -13,19 +17,7 @@ const Wrapper = styled.div`
 
 
 
-const Loading = styled(motion.div)`
-    width: 100%;
-    height: 100vh;
-    background-color: #333333;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
 
-    & >div{
-        width: 100%;
-    }
-`
 
 const A = styled(motion.div)`
     width: 200px;
@@ -34,11 +26,7 @@ const A = styled(motion.div)`
     background-color: #333333;
 `
 
-const Hello = styled(motion.div)`
-    color: #ffffff;
-    font-size: 40px;
-    display: inline-block;
-`
+
 
 const ProgressBar = styled(motion.div)`
     position: fixed;
@@ -49,6 +37,39 @@ const ProgressBar = styled(motion.div)`
     height: 10px;
     background: #ffffff;
     transform-origin: 0%;
+`
+
+const NavBox = styled.div`
+    width: 50px;
+    height: 200px;
+    background-color: #b5b5b5;
+    position: fixed;
+    z-index: 1;
+    right: 0;
+    bottom: 25px;
+    border-radius: 10px 0 0 10px;
+
+    & > div:nth-child(1){
+        border-radius: 10px 0 0 0;
+    }
+    & > div:nth-child(4){
+        border-radius: 0 0 0 10px;
+    }
+    
+`
+const Btn = styled.div`
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    & > img{
+        width: 35px;
+        height: 35px;
+    }
 `
 
 const boxVariants = {
@@ -74,150 +95,72 @@ const boxVariants = {
     }
   }
 
-  const helloVariants = {
-    initial:{
-        scale: 1,
-        y: -100,
-    },
-    animate:{
-        scale: 1,
-        y: 0,
-        transition:{
-            delay: 1,
-            duration: 0.7,
-        }
-    }
-  }
 
-  const HelloVariants = {
-    initial:{
-        scale: 1,
-        x : -120,
-    },
-    animate:{
-        scale: 1,
-        x: 0,
-        transition:{
-            delay: 1.5,
-            duration: 1,
-        }
-    },
-    leaving:{
-        scale: 0,
-        x: -100,
-        duration: 2,
-
-    }
-  }
 
 function Main(){
     const [showing , setShowing] = useState(true); 
-    const [out, setOut] = useState(true); 
-    const { scrollYProgress } = useScroll()
-    setTimeout(()=>{setShowing(false)},2500)
-    setTimeout(()=>{setOut(false)},6500)
+    const { scrollYProgress } = useScroll();
+    setTimeout(()=>{setShowing(false)},2500);
 
+    const navigation = [
+        useMoveScroll(home),
+        useMoveScroll(user),
+        useMoveScroll(skill),
+        useMoveScroll(project),
 
-    
+    ];
 
-
-    
 
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
         damping: 30,
         restDelta: 0.001
       });
-
+      
   
-    return (
+      return (
         <Wrapper>
-            <NavBar />
-            <ProgressBar className="progress-bar" style={{ scaleX }} />
-    
             
             
-                {showing ?  <A  variants={boxVariants}  initial="initial" animate="visible" exit="leaving" layoutId="a" /> : null }
-                {!showing ? 
-                    <>
-                        
-                        <ProgressBar className="progress-bar" style={{ scaleX }} />
-                        
-                        <Loading layoutId="a">
-                            <Hello variants={helloVariants}  initial="initial" animate="animate" >안녕하십니까</Hello>
-                            <div>
-                                <AnimatePresence>{out ? 
-                                <Hello 
-                                    layoutId="b"
-                                    variants={HelloVariants}  
-                                    initial="initial" 
-                                    animate="animate"
-                                    exit="leaving"
-                                >
-                                    신입
-                                </Hello> : null}
-                                </AnimatePresence>
-
-                                <AnimatePresence>{!out ? 
-                                <Hello 
-                                    layout
-                                    initial={{
-                                        scale: 0,
-                                        x: -800,
-                                    }}
-                                    animate={{
-                                        scale: 1,
-                                        x: 0,
-                                        transition:{
-                                            duration: 1,
-                                        }
-                                    }}>
-                                    소통과 협업을 중요시 생각하고 성장을 즐기는
-                                </Hello>: null}
-                                </AnimatePresence>
-                                
-                                
-                                <Hello
-                                    layout
-                                    initial={{
-                                        scale: 0,
-                                    }}
-                                    animate={{
-                                        scale: 1,
-                                        x: 10,
-                                        transition:{
-                                            delay: 1.7,
-                                            duration: 1,
-                                        }
-                                    }}>
-                                    프론트엔드 개발자
-                                </Hello>
-                            </div>
-                            <Hello
-                                initial={{
-                                    scale: 1,
-                                    x : -250,
-                                }}
-                                animate={{
-                                    scale: 1,
-                                    x: 0,
-                                    transition:{
-                                        delay: 2.5,
-                                        duration: 1,
-                                    }
-                                }}>
-                                왕현수입니다
-                            </Hello>
-                        </Loading>
+            {showing ?  
+            <A  variants={boxVariants}  initial="initial" animate="visible" exit="leaving" layoutId="a" /> 
+            : 
+                <>
+                    <ProgressBar className="progress-bar" style={{ scaleX }} />
+                    <NavBox>
+                        {navigation.map((tab, index)=>(
+                            <Btn onClick={tab.onMoveTOElement}><img src={tab.img} /></Btn>
+                        ))}      
+                    </NavBox>
+                    <div ref={navigation[0].element}>
+                        <HomeStart />
+                    </div>
+                    <div ref={navigation[1].element}>
                         <Myinfo />
+                    </div>
+                    <div ref={navigation[2].element}>
                         <Stact />
+                    </div>
+                    <div ref={navigation[3].element}>
                         <Project />
-                    </>  
-                     : null}
+                    </div>
+                </>  
+            }
+        
           
             
         </Wrapper>
-    )
+    )           
 }
 
 export default Main;
+
+
+function useMoveScroll(img){
+    const element = useRef(null);
+    const onMoveTOElement = () => {
+        element.current?.scrollIntoView({behavior: "smooth", block: 'start'});
+    };
+
+    return {element, onMoveTOElement,img};
+}
