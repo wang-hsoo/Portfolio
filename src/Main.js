@@ -122,9 +122,9 @@ function Main(){
         <Wrapper>
             
             
-            {showing ?  
+            {/* {showing ?  
             <A  variants={boxVariants}  initial="initial" animate="visible" exit="leaving" layoutId="a" /> 
-            : 
+            :  */}
                 <>
                     <ProgressBar className="progress-bar" style={{ scaleX }} />
                     <NavBox>
@@ -145,7 +145,7 @@ function Main(){
                         <Project />
                     </div>
                 </>  
-            }
+            
         
           
             

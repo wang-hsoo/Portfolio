@@ -125,8 +125,8 @@ function Myinfo(){
                     <Etc>신구대학교 IT소프트웨어과</Etc>
                 </Info>
                 <Answer>
-                        <List layoutId="A" onClick={()=>setSelectId("A")}>A</List>
-                        <List layoutId="B" onClick={()=>setSelectId("B")}>B</List>
+                        <List layoutId="A" onClick={()=>setSelectId("A")}># 축구선수부터 개발자까지</List>
+                        <List layoutId="B" onClick={()=>setSelectId("B")}># 프론트엔드 개발을 선택한 이유</List>
                         <List layoutId="C" onClick={()=>setSelectId("C")}># 개발자로서 향후 목표</List>
                 </Answer>
                 <AnimatePresence>
@@ -134,13 +134,24 @@ function Myinfo(){
 
                     {selectId && 
                     <Qna>
-                        {selectId === 'A' && <ListQna layoutId="A" onClick={()=>setSelectId(null)} >A</ListQna>}
-                        {selectId === 'B' && <ListQna layoutId="B" onClick={()=>setSelectId(null)} >B</ListQna>}
+                        {selectId === 'A' && <ListQna layoutId="A" onClick={()=>setSelectId(null)} >
+                            <div># 축구선수부터 개발자까지</div>
+                            <div>저는 중학교부터 고 1때까지 축구부 활동을 했었습니다.</div>
+                            <div>남들보다 늦게시작한 만큼 실력을 키우는데 어려움이 있었고 그저 즐겁기만 하던 축구를 순수하게 즐길 수 없었습니다.</div>
+                            <div>결국 축구를 그만두었고 대학교에 진학했습니다. 대학교에 와서 배운 공부들은 너무 재밌었으며 더 잘하고 싶었습니다</div>
+                            <div>코딩을 잘하고 싶었기에 꾸준히 공부를 해나갔고 개발 공부는 축구와는 다르게 공부를 할수록 더 즐길 수 있었습니다.</div>   
+                        </ListQna>}
+                        {selectId === 'B' && <ListQna layoutId="B" onClick={()=>setSelectId(null)} >
+                            <div># 프론트엔드 개발을 선택한 이유</div>  
+                            <div>대학교에 와서 처음 공부를 했을 때 모든게 신기했고 재밌었습니다.</div>  
+                            <div>하지만 그 중에서 HTML/CSS는 내가 만든것을 화면으로 직접적으로 볼 수 있는게 좋았습니다.</div>
+                            <div>그렇게 프론트를 좀 더 집중적으로 공부 하게 되었고 실력이 늘고 할 수 있는게 많아질수록 프론트에 더 빠져들게 되었습니다.</div>
+                        </ListQna>}
                         {selectId === 'C' && <ListQna layoutId="C" onClick={()=>setSelectId(null)} >
                             <div># 개발자로서 향후 목표</div>
                             <div>저는 현재 개발이 재밌고 잘하고 싶어 개발자를 희망하고 있습니다</div>
                             <div>하지만 기획도 관심있으며 한 프로젝트에 전체적인 부분에 관여할 수 있는 PM에 매력을 느끼고 있습니다</div>
-                            <div>그렇기 때문에 프론트, 백엔드, 모바일 등 여러 분야를 차근차근 공부하며 성장해 개발이 가능한 PM이 되는것이 목표입니다.</div>
+                            <div>그렇기 때문에 프론트, 백엔드, 모바일 등 여러 분야를 차근차근 공부하며 성장해 최종적으로 PM이 되는것이 목표입니다.</div>
                         </ListQna>}
 
                     </Qna>}

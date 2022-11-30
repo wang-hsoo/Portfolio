@@ -4,6 +4,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import momento from "./img/momento.png"
 import fifa from "./img/fifa.png"
 import film from "./img/film.png"
+import portfolio from "./img/portfolio.png"
+import shingu from "./img/shingu.png"
 import notion from "./img/notion.png"
 import github from "./img/github.png"
 
@@ -62,23 +64,33 @@ const Title = styled.div`
 `
 
 const ProjectLi = styled.div`
-    display: grid;
+    display: flex;
+    flex-direction: column;
     width: 70%;
     margin: 0;
-    grid-template-columns: repeat( 2, 1fr);
-    gap: 30px;
     position: relative;
     z-index: 5;
-
+    margin: 0;
+    width: 100%;
+    align-items: flex-start;
 `
 
 const Li = styled.div`
     font-size: 24px;
-    width: 300px;
+    width: 75%;
     padding: 20px 10px;
     border: 1px solid #ffffff;
     border-radius: 15px;
     cursor: pointer;
+    margin: 0;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > div{
+        margin-left: 0;
+    }
 `
 
 const SelectTitle = styled.div`
@@ -97,7 +109,7 @@ const SelectCon = styled.div`
 
 const LogoBox = styled.div`
     display: flex;
-
+    margin: 0;
     & > a{
         width: 36px;
         height: 36px;
@@ -111,7 +123,7 @@ const LogoBox = styled.div`
     }
 
     & > a:hover{
-        scale: 1.5;
+        scale: 1.2;
         transition: scale .3s;
         background-color: #ffffff;
     }
@@ -168,10 +180,6 @@ function Project(){
                             <SelectTitle>Momento</SelectTitle>
                             <SelectCon>
                                 <div>나만의 메모장</div>
-                                <LogoBox>
-                                    <a href="https://veil-form-0b0.notion.site/Momentum-edd8f99c83db4b3fa4fa67b1634b6d7d" target="_blank"><img src={notion} /></a>
-                                    <a href="https://github.com/wang-hsoo/applyMomemto" target="_blank"><img src={github} /></a>
-                                </LogoBox>
                             </SelectCon>
                             <SelectStact>
                                 <div>팀구성 : 1인</div>
@@ -193,10 +201,6 @@ function Project(){
                             <SelectTitle>Film</SelectTitle>
                             <SelectCon>
                                 <div>현재 상영중인 영화 추천 사이트</div>
-                                <LogoBox>
-                                    <a href="https://veil-form-0b0.notion.site/Film-14ccdab023664e3b9d5be81b612da3fa" target="_blank"><img src={notion} /></a>
-                                    <a href="https://github.com/wang-hsoo/film" target="_blank"><img src={github} /></a>
-                                </LogoBox>
                             </SelectCon>
                             <SelectStact>
                                 <div>팀구성 : 3인</div>
@@ -219,15 +223,55 @@ function Project(){
                         <SelectTitle>Fifa Search</SelectTitle>
                         <SelectCon>
                             <div>넥슨 피파 유저 검색 사이트</div>
-                            <LogoBox>
-                                    <a href="https://veil-form-0b0.notion.site/FIFASearch-ce11003a2ec74e1692528288dab05db5" target="_blank"><img src={notion} /></a>
-                                    <a href="https://github.com/wang-hsoo/fifaInfo" target="_blank"><img src={github} /></a>
-                            </LogoBox>
                         </SelectCon>
                         <SelectStact>
                             <div>팀구성 : 1인</div>
                             <div>역할 : 프론트엔드 개발자</div>
                             <div>사용 언어 : Html, Css, JavaScript, React, TypeScript</div>
+                        </SelectStact>
+                    </SelectPro>}
+                </AnimatePresence>
+
+                <AnimatePresence>
+                {project === "d" &&
+                    <SelectPro 
+                        layoutId="project"
+                        variants={projectVariants}  
+                        initial="entry"
+                        animate="center"
+                        exit="exit"
+                        key="fifa"
+                        style={{"backgroundImage" : `linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ),url(${shingu})`}}>
+                        <SelectTitle>Shingu QnA</SelectTitle>
+                        <SelectCon>
+                            <div>신구대학교 문의 및 민원 사이트</div>
+                        </SelectCon>
+                        <SelectStact>
+                            <div>팀구성 : 3인</div>
+                            <div>역할 : PM, 프론트엔드 개발자</div>
+                            <div>사용 언어 : Html, Css, JavaScript, React, TypeScript</div>
+                        </SelectStact>
+                    </SelectPro>}
+                </AnimatePresence>
+
+                <AnimatePresence>
+                {project === "e" &&
+                    <SelectPro 
+                        layoutId="project"
+                        variants={projectVariants}  
+                        initial="entry"
+                        animate="center"
+                        exit="exit"
+                        key="fifa"
+                        style={{"backgroundImage" : `linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ),url(${portfolio})`}}>
+                        <SelectTitle>Portfolio</SelectTitle>
+                        <SelectCon>
+                            <div>왕현수 포트폴리오 사이트</div>
+                        </SelectCon>
+                        <SelectStact>
+                            <div>팀구성 : 1인</div>
+                            <div>역할 : 프론트엔드 개발자</div>
+                            <div>사용 언어 : Html, Css, JavaScript, React</div>
                         </SelectStact>
                     </SelectPro>}
                 </AnimatePresence>
@@ -239,10 +283,40 @@ function Project(){
                     <div />
                 </Title>
                 <ProjectLi>
-                    <Li onClick={() => setProject('a')}>ApplyMomentum</Li>
-                    <Li onClick={() => setProject('b')}>Film</Li>
-                    <Li onClick={() => setProject('c')}>FifaSearch</Li>
-                    <Li>Portfolio</Li>
+                    <Li onClick={() => setProject('a')}>
+                        <div>ApplyMomentum</div>
+                        <LogoBox>
+                                    <a href="https://veil-form-0b0.notion.site/Momentum-edd8f99c83db4b3fa4fa67b1634b6d7d" target="_blank"><img src={notion} /></a>
+                                    <a href="https://github.com/wang-hsoo/applyMomemto" target="_blank"><img src={github} /></a>
+                        </LogoBox>
+                    </Li>
+                    <Li onClick={() => setProject('b')}>
+                        <div>Film</div>
+                        <LogoBox>
+                                    <a href="https://veil-form-0b0.notion.site/Film-14ccdab023664e3b9d5be81b612da3fa" target="_blank"><img src={notion} /></a>
+                                    <a href="https://github.com/wang-hsoo/film" target="_blank"><img src={github} /></a>
+                        </LogoBox>
+                    </Li>
+                    <Li onClick={() => setProject('c')}>
+                        <div> FifaSearch</div>
+                        <LogoBox>
+                                    <a href="https://veil-form-0b0.notion.site/FIFASearch-ce11003a2ec74e1692528288dab05db5" target="_blank"><img src={notion} /></a>
+                                    <a href="https://github.com/wang-hsoo/fifaInfo" target="_blank"><img src={github} /></a>
+                        </LogoBox>
+                    </Li>
+                    <Li onClick={() => setProject('d')}>
+                        <div>Shingu QnA</div>
+                        <LogoBox>
+                                    <a href="https://veil-form-0b0.notion.site/ShinguQnA-c0fd0f184b9844bc828ff1ae61d16a9c" target="_blank"><img src={notion} /></a>
+                                    <a href="https://github.com/wang-hsoo/shingu" target="_blank"><img src={github} /></a>
+                        </LogoBox>
+                    </Li>
+                    <Li onClick={() => setProject('e')}>
+                        <div>Portfolio</div>
+                        <LogoBox>
+                                    <a href="https://veil-form-0b0.notion.site/Portfolio-7dac9a6e3203404785b4d1a6475c2f3d" target="_blank"><img src={notion} /></a>
+                                    <a href="https://github.com/wang-hsoo/Portfolio" target="_blank"><img src={github} /></a>
+                        </LogoBox></Li>
                 </ProjectLi>
 
             </ProjectList>
