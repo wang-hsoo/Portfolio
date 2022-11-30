@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Portfolio/static/css/main.40b07e15.css",
+    "main.js": "/Portfolio/static/js/main.717ab1a9.js",
+    "static/media/film.png": "/Portfolio/static/media/film.82bdf80199e36cab034e.png",
+    "static/media/momento.png": "/Portfolio/static/media/momento.f2b5429c2d3d5b6af91c.png",
+    "static/media/Jua-Regular.ttf": "/Portfolio/static/media/Jua-Regular.bb8909a47f60980f5988.ttf",
+    "static/media/portfolio.png": "/Portfolio/static/media/portfolio.9b20a8a81e6131790bc0.png",
+    "static/media/fifa.png": "/Portfolio/static/media/fifa.823d3ab0d5c8fce91838.png",
+    "static/media/shingu.png": "/Portfolio/static/media/shingu.e10676a1715c51f15483.png",
+    "static/media/my.jpg": "/Portfolio/static/media/my.a23369aff463d596ff79.jpg",
+    "index.html": "/Portfolio/index.html",
+    "main.40b07e15.css.map": "/Portfolio/static/css/main.40b07e15.css.map",
+    "main.717ab1a9.js.map": "/Portfolio/static/js/main.717ab1a9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.40b07e15.css",
+    "static/js/main.717ab1a9.js"
+  ]
+}
